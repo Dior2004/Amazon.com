@@ -1,0 +1,94 @@
+.SignInPopUp {
+  position: absolute;
+  left: 20%;
+  transform: translateX(-50%);
+  width: 500px;
+  min-height: 380px;
+  color: #000;
+  background-color: #fff;
+  z-index: 6;
+  box-shadow: 0 2px 10px #00000022;
+  border-radius: 4px;
+  cursor: auto;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SignInPopUp::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 144px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  clip-path: polygon(50% 41%, 0% 100%, 100% 100%);
+}
+
+.SignInPopUp button {
+  width: 200px;
+  height: 31px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #846a29;
+  border-radius: 3px;
+  background: linear-gradient(#fadf9d, #f0c14c);
+}
+
+.SignInPopUp button:focus {
+  border: 1px solid #e97800;
+  box-shadow: 0 0 4px 0.5px #ff8400;
+  outline: none;
+}
+
+.SignInPopUp button:hover {
+  background: linear-gradient(#f7da93, #f1bf3e);
+  cursor: pointer;
+}
+
+.SignInPopUp > span {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.SignInPopUp > span a {
+  color: var(--main-link-color);
+}
+
+.SignInPopUp > span a:hover {
+  color: var(--main-link-color-hover);
+  text-decoration: underline;
+}
+
+.SignInPopUp .your_lists_and_your_accounts {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  margin-top: 8px;
+  padding: 10px 0 5px 0;
+  display: flex;
+}
+
+.your_lists_and_your_accounts ul {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.your_lists_and_your_accounts ul:nth-child(2) {
+  padding-left: 20px;
+  border-left: 1px solid #ddd;
+}
+
+.your_lists_and_your_accounts a {
+  color: #444;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.your_lists_and_your_accounts a:hover {
+  color: var(--main-link-color-hover);
+  text-decoration: underline;
+}

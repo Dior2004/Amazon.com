@@ -1,0 +1,53 @@
+.signing_in {
+  width: 100%;
+  height: 180px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.signing_in .wrap {
+  width: 100%;
+  height: 126px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signing_in .wrap p {
+  font-size: 14px;
+  line-height: 15px;
+  margin-bottom: 5px;
+}
+
+.signing_in .wrap button {
+  width: 230px;
+  height: 28px;
+  font-size: 13px;
+  font-weight: 550;
+  border: 1px solid #e6a400;
+  border-radius: 5px;
+  background: rgb(255, 195, 40);
+  cursor: pointer;
+  background: linear-gradient(0deg, #ffc227 0%, #ffd978 72%, #ffd872 100%);
+}
+
+.signing_in .wrap span {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.signing_in .wrap span a {
+  transition: 0.2s;
+  color: var(--main-link-color);
+  text-decoration: none;
+}
+
+.signing_in .wrap span a:hover {
+  text-decoration: underline;
+  color: var(--main-link-color-hover);
+}

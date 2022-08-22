@@ -1,0 +1,56 @@
+.carousel_container {
+  max-width: 1500px;
+  height: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel_container::before {
+  content: "";
+  z-index: 5;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(transparent 0%, #e8ededac 50%, #eaeded 100%);
+}
+
+.carousel_slide {
+  width: 100%;
+  display: flex;
+}
+
+.with {
+  transition: all 0.4s ease-in-out;
+}
+
+.without {
+  transition: 0.001s;
+}
+
+.carousel_slide img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel_container button {
+  height: 40%;
+  width: 75px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  font-size: 40px;
+  top: 2px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.carousel_container button:focus {
+  border-color: rgb(0, 106, 213);
+  outline: 2px solid #fff;
+}
+
+.carousel_container .next {
+  right: 0;
+}

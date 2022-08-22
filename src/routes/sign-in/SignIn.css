@@ -1,0 +1,182 @@
+.SignIn {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SignIn .top {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.SignIn .shadow {
+  width: 90%;
+  height: 20px;
+  z-index: 1;
+  margin-top: -18px;
+  box-shadow: 0 0 15px #eee;
+  background-color: #e7e7e7;
+  border-radius: 50%;
+}
+
+.SignIn .wrap {
+  width: 348px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SignIn .wrap .image {
+  width: 103px;
+  margin: 0 0 10px 0;
+}
+
+.SignIn .wrap form {
+  width: 100%;
+  min-height: 280px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 20px 26px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.SignIn .wrap form h1 {
+  font-size: 28px;
+  font-weight: 450;
+  line-height: 37px;
+  margin-bottom: 10px;
+}
+
+.SignIn .wrap form p {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+}
+
+.SignIn .wrap form input {
+  width: 100%;
+  height: 31px;
+  outline: none;
+  border-radius: 3px;
+  padding: 3px 7px;
+  font-size: 14px;
+  box-shadow: 0 1px 0 #ffffff80, 0 1px 0 #00000012 inset;
+  border: 1px solid #b39e89;
+  margin: 2px 0 13px 0;
+  transition: 0.2s;
+}
+
+.SignIn .wrap form input:focus,
+.SignIn button:focus {
+  border: 1px solid #e97800;
+  box-shadow: 0 0 4px 0.5px #ff8400;
+  outline: none;
+}
+
+.SignIn form button {
+  width: 100%;
+  height: 31px;
+  font-size: 14px;
+  border: 1px solid #846a29;
+  border-radius: 3px;
+  background: linear-gradient(#fadf9d, #f0c14c);
+}
+
+.SignIn form button:hover {
+  background: linear-gradient(#f7da93, #f1bf3e);
+  cursor: pointer;
+}
+
+.SignIn form span {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  margin: 18px 0;
+}
+
+.SignIn form span a {
+  color: #0066c0;
+  text-decoration: none;
+}
+
+.SignIn .help {
+  margin: 0;
+}
+
+.SignIn form > .help a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0066c0;
+  text-decoration: none;
+  padding-left: 3px;
+  transition: 0.2s;
+}
+
+.SignIn a:hover,
+.SignIn .wrap form > .help a:hover {
+  color: #ce5200;
+  text-decoration: underline;
+}
+
+.SignIn .before_after_span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.SignIn .wrap .before_after_span span {
+  font-size: 13px;
+  color: #6c6b6b;
+  padding: 0 8px;
+  margin-bottom: 13px;
+  position: relative;
+}
+
+.SignIn .wrap .before_after_span span::before,
+.SignIn .wrap .before_after_span span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 150%;
+  height: 1px;
+  background-color: #dfdfdf;
+}
+
+.SignIn .wrap .before_after_span span::before {
+  left: -150%;
+}
+
+.SignIn .wrap .before_after_span span::after {
+  left: 100%;
+}
+
+.SignIn .wrap > a {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.SignIn .wrap > a > button {
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(#fcfcfd, #e9eaed);
+  border-radius: 3px;
+  border: 1px solid #a2a6ac;
+  font-size: 14px;
+}
+
+.SignIn .wrap > a > button:hover {
+  background: linear-gradient(#f1f1f5, #d8d9dd);
+  cursor: pointer;
+}
