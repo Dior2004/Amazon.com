@@ -17,7 +17,7 @@ const Account = () => {
             alt=""
           />
         </Link>
-        <div class="wrap">
+        <div className="wrap">
           <form action="">
             <h1>Create account</h1>
             <p>Your name</p>

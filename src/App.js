@@ -9,6 +9,8 @@ import ShopNow from "./routes/shopnow/ShopNow";
 import Account from "./routes/account/Account";
 import Login from "./routes/login/Login";
 import SignIn from "./routes/sign-in/SignIn";
+import Cart from "./routes/cart/Cart";
+import Backtotop from "./components/backtotop/Backtotop";
 
 function App() {
   return (
@@ -23,9 +25,11 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
 
         <Suggestion />
+        <Backtotop />
         <Footer />
       </div>
     </BrowserRouter>

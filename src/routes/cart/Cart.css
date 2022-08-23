@@ -1,0 +1,67 @@
+.cart-page {
+  width: 100%;
+  display: flex;
+  padding: 15px;
+}
+
+.no_purchase_banner {
+  width: 78.5%;
+  background-color: #fff;
+  display: flex;
+  padding: 52px 20px 20px 20px;
+  margin: 15px 0;
+}
+
+.no_purchase_banner img {
+  width: 32%;
+  margin-right: 25px;
+}
+
+.cart-page .signin_to_ur_account {
+  flex: 1;
+  background-color: #fff;
+}
+
+.signin_to_ur_account h2 {
+  font-size: 26px;
+}
+
+.signin_to_ur_account a {
+  font-size: 15px;
+  color: var(--main-link-color);
+}
+
+.signin_to_ur_account a:hover {
+  text-decoration: underline;
+  color: var(--main-link-color-hover);
+}
+
+.signin_to_ur_account .btns {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.signin_to_ur_account .btns button {
+  padding: 5px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  box-shadow: 0 5px 10px 2px #00000008;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.signin_to_ur_account .btns .signing_in_btn {
+  background-color: #ffd814;
+  border-color: #f2ca00;
+}
+
+.signin_to_ur_account .signing_in_btn:hover {
+  background-color: #f9c800;
+}
+.signin_to_ur_account .signing_up_btn:hover {
+  background-color: #00000008;
+}

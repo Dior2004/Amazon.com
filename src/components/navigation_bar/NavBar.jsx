@@ -1,16 +1,16 @@
-import { React } from "react";
+import { React, useState } from "react";
 import "./NavBar.css";
+import "./SignInPopUp.css";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { GoSearch } from "react-icons/go";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
-import SignInPopUp from "./signin-popup/SignInPopUp";
+import { yourListsYourAccounts } from "./YourListsAndYourAccounts";
 
 const NavBar = () => {
   const location = useLocation();
-
-  // const [signinBtn, setSigninBtn] = useState(false);
+  const [signinBtn, setSigninBtn] = useState(false);
 
   return location.pathname === "/login" ||
     location.pathname === "/signin" ||
@@ -63,7 +63,15 @@ const NavBar = () => {
             <IoMdArrowDropdown />
           </i>
         </div>
-        <div style={{ position: "relative" }}>
+        <div
+          onMouseEnter={() => {
+            setSigninBtn(!signinBtn);
+          }}
+          onMouseLeave={() => {
+            setSigninBtn(!signinBtn);
+          }}
+          style={{ position: "relative" }}
+        >
           <Link to="/signin">
             <div className="sign_in">
               <span>
@@ -77,7 +85,55 @@ const NavBar = () => {
               </span>
             </div>
           </Link>
-          <SignInPopUp />
+
+          <div
+            className="SignInPopUp"
+            style={signinBtn ? { display: "flex" } : { display: "none" }}
+          >
+            <Link
+              onClick={() => {
+                setSigninBtn(!signinBtn);
+              }}
+              style={{ outline: "none" }}
+              to="/signin"
+            >
+              <button>Sign in</button>
+            </Link>
+            <span>
+              New customer?{" "}
+              <Link
+                onClick={() => {
+                  setSigninBtn(!signinBtn);
+                }}
+                to="/account"
+              >
+                Start here.
+              </Link>
+            </span>
+            <div className="your_lists_and_your_accounts">
+              {yourListsYourAccounts.map((e, index) => {
+                return (
+                  <ul key={index}>
+                    <h4>{e.title}</h4>
+                    {e.links.map((i, id) => {
+                      return (
+                        <span key={id} style={{ margin: "2px 0" }}>
+                          <Link
+                            onClick={() => {
+                              setSigninBtn(!signinBtn);
+                            }}
+                            to="/signin"
+                          >
+                            {i}
+                          </Link>
+                        </span>
+                      );
+                    })}
+                  </ul>
+                );
+              })}
+            </div>
+          </div>
         </div>
         <div className="returns">
           <span>
@@ -90,12 +146,14 @@ const NavBar = () => {
             </h2>
           </span>
         </div>
-        <div className="cart">
-          <i>
-            <FaShoppingCart />
-          </i>
-          <p>Cart</p>
-        </div>
+        <Link to="/cart">
+          <div className="cart">
+            <i>
+              <FaShoppingCart />
+            </i>
+            <p>Cart</p>
+          </div>
+        </Link>
       </nav>
 
       <ul className="navtools">

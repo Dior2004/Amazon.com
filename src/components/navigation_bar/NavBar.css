@@ -8,9 +8,13 @@ nav {
   padding: 0 10px;
 }
 
+nav a {
+  color: #fff;
+}
+
 .image {
   width: 113px;
-  padding: 8px 5px 5px 5px;
+  padding: 15px 5px 5px 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +136,6 @@ nav {
 
 .sign_in,
 .returns {
-  color: #fff;
   padding: 4px 9px 0;
 }
 

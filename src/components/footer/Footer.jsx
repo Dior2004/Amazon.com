@@ -19,7 +19,7 @@ const Footer = () => {
   ) : (
     <div className="footer_wrap">
       <footer>
-        <a href="#">Back to top</a>
+        <a href="#top">Back to top</a>
 
         <div className="ul_sect">
           <ul>
