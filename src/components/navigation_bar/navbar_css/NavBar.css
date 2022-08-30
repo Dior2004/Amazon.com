@@ -78,7 +78,7 @@ nav a {
   height: 40px;
   display: flex;
   margin: 0 10px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .serach_area .select {

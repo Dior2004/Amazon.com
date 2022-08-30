@@ -17,9 +17,7 @@ const NavBar = () => {
   const [signinBtn, setSigninBtn] = useState(false);
   const [langViewBtn, setLangViewBtn] = useState(false);
   const [inputCondition, setInputCondition] = useState(false);
-  let [langBtn, setLangBtn] = useState(0);
-
-  console.log(inputCondition);
+  let [langFlagBtn, setLangFlagBtn] = useState(0);
 
   return location.pathname === "/login" ||
     location.pathname === "/signin" ||
@@ -47,7 +45,10 @@ const NavBar = () => {
             <h2> Uzbekistan</h2>
           </span>
         </div>
-        <form className="serach_area">
+        <form
+          className="serach_area"
+          style={inputCondition ? { boxShadow: "0px 0px 2px 3px #ff9900" } : {}}
+        >
           <div className="select">
             <span>All</span>
             <i style={{ transform: "translateY(3px)" }}>
@@ -84,7 +85,7 @@ const NavBar = () => {
             <div className="language">
               <img
                 style={{ width: 25, height: 17, marginBottom: 2 }}
-                src={languages[langBtn].flagUrl}
+                src={languages[langFlagBtn].flagUrl}
                 alt="flag"
               />
               <i style={{ transform: "translateY(4px)" }}>
@@ -108,7 +109,7 @@ const NavBar = () => {
                   setLangViewBtn(false);
                 }}
                 style={{ margin: 5 }}
-                to="/learnmore"
+                to="/falselink"
               >
                 Learn More
               </Link>
@@ -119,7 +120,8 @@ const NavBar = () => {
                   <li
                     key={e.id}
                     onClick={() => {
-                      setLangBtn((langBtn = e.id));
+                      setLangFlagBtn((langFlagBtn = e.id));
+                      setLangViewBtn(false);
                     }}
                   >
                     <div className="circle"></div>
@@ -251,7 +253,7 @@ const NavBar = () => {
       <div
         className="dark_mask"
         style={
-          signinBtn || langViewBtn
+          signinBtn || langViewBtn || inputCondition
             ? { transform: "scale(1)" }
             : { transform: "scale(0)" }
         }
