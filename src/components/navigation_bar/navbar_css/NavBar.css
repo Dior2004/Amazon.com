@@ -1,11 +1,12 @@
 nav {
   width: 100%;
-  min-height: 60px;
+  height: 60px;
   background-color: #131921;
   display: flex;
   align-items: center;
   color: #fff;
   padding: 0 10px;
+  position: relative;
 }
 
 nav a {
@@ -78,8 +79,6 @@ nav a {
   display: flex;
   margin: 0 10px;
   border-radius: 4px;
-  overflow: hidden;
-  transition: 0.9s;
 }
 
 .serach_area .select {
@@ -92,6 +91,7 @@ nav a {
   font-size: 16px;
   display: flex;
   align-items: center;
+  border-radius: 4px 0 0 4px;
 }
 
 .serach_area .select:hover {
@@ -116,11 +116,16 @@ nav a {
 .serach_area button {
   width: 45px;
   height: 100%;
+  border-radius: 0 4px 4px 0;
   padding-top: 6px;
   border: none;
   font-size: 20px;
   background-color: #febe68;
   cursor: pointer;
+}
+
+.serach_area button:focus {
+  box-shadow: 0px 0px 2px 3px #ff9900;
 }
 
 .language {
@@ -169,9 +174,11 @@ nav a {
   margin: 0 3px;
 }
 
+/* navigation tools */
+
 .navtools {
   width: 100%;
-  min-height: 40px;
+  height: 40px;
   background-color: #232f3e;
   display: flex;
   align-items: center;

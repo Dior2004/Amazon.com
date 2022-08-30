@@ -12,7 +12,7 @@ const Carousel = () => {
   useEffect(() => {
     let autoSlider = setInterval(() => {
       setCounter(counter + 1);
-    }, 5000);
+    }, 8000);
     return () => {
       clearInterval(autoSlider);
     };

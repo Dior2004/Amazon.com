@@ -1,19 +1,21 @@
+/* sign in pop up */
+
 .SignInPopUp {
   position: absolute;
   left: 20%;
-  transform: translateX(-50%);
   width: 500px;
   min-height: 380px;
   color: #000;
   background-color: #fff;
-  z-index: 6;
-  box-shadow: 0 2px 10px #00000022;
+  z-index: 7;
+  box-shadow: 0 2px 10px #00000044;
   border-radius: 4px;
   cursor: auto;
   padding: 15px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition-delay: 0.1s;
 }
 
 .SignInPopUp::before {
@@ -90,4 +92,18 @@
 .your_lists_and_your_accounts a:hover {
   color: var(--main-link-color-hover);
   text-decoration: underline;
+}
+
+/* dark mask */
+
+.dark_mask {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 6;
+  width: 100%;
+  height: calc(100% - 100px);
+  background-color: #000;
+  opacity: 0.6;
+  transition-delay: 0.1s;
 }

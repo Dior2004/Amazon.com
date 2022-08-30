@@ -6,7 +6,8 @@ const Suggestion = () => {
   const location = useLocation();
   return location.pathname === "/login" ||
     location.pathname === "/signin" ||
-    location.pathname === "/account" ? (
+    location.pathname === "/account" ||
+    location.pathname === "/learnmore" ? (
     <></>
   ) : (
     <div className="signing_in">

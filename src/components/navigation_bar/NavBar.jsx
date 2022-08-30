@@ -1,20 +1,30 @@
 import { React, useState } from "react";
-import "./NavBar.css";
-import "./SignInPopUp.css";
+import "./navbar_css/NavBar.css";
+import "./navbar_css/SignInPopUp.css";
+import "./navbar_css/ChosenLanguages.css";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { GoSearch } from "react-icons/go";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
-import { yourListsYourAccounts } from "./YourListsAndYourAccounts";
+import {
+  yourListsYourAccounts,
+  languages,
+} from "./YourListsAndYourAccountsPlusLanguages";
 
 const NavBar = () => {
   const location = useLocation();
   const [signinBtn, setSigninBtn] = useState(false);
+  const [langViewBtn, setLangViewBtn] = useState(false);
+  const [inputCondition, setInputCondition] = useState(false);
+  let [langBtn, setLangBtn] = useState(0);
+
+  console.log(inputCondition);
 
   return location.pathname === "/login" ||
     location.pathname === "/signin" ||
-    location.pathname === "/account" ? (
+    location.pathname === "/account" ||
+    location.pathname === "/learnmore" ? (
     <></>
   ) : (
     <>
@@ -44,31 +54,94 @@ const NavBar = () => {
               <IoMdArrowDropdown />
             </i>
           </div>
-          <input type="text" required />
+          <input
+            onFocus={() => {
+              setInputCondition(true);
+            }}
+            type="text"
+            required
+          />
           <button>
             <i>
               <GoSearch />
             </i>
           </button>
         </form>
-        <div className="language">
-          <img
-            style={{ width: 25, height: 17, marginBottom: 2 }}
-            src={
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRlIRDluemA2h0BXML3uCo1147SsKFZvXu-zVQMrZM_A&s"
-            }
-            alt="flag"
-          />
-          <i style={{ transform: "translateY(4px)" }}>
-            <IoMdArrowDropdown />
-          </i>
-        </div>
+
+        {/* lang btn */}
+
         <div
+          className="language_wrapper"
           onMouseEnter={() => {
-            setSigninBtn(!signinBtn);
+            setLangViewBtn(true);
           }}
           onMouseLeave={() => {
-            setSigninBtn(!signinBtn);
+            setLangViewBtn(false);
+          }}
+          style={{ position: "relative" }}
+        >
+          <Link to="/falselink">
+            <div className="language">
+              <img
+                style={{ width: 25, height: 17, marginBottom: 2 }}
+                src={languages[langBtn].flagUrl}
+                alt="flag"
+              />
+              <i style={{ transform: "translateY(4px)" }}>
+                <IoMdArrowDropdown />
+              </i>
+            </div>
+          </Link>
+
+          <div
+            style={
+              langViewBtn
+                ? { transform: "scale(1)" }
+                : { transform: "scale(0)" }
+            }
+            className="list-of-langs"
+          >
+            <span>
+              Change language{" "}
+              <Link
+                onClick={() => {
+                  setLangViewBtn(false);
+                }}
+                style={{ margin: 5 }}
+                to="/learnmore"
+              >
+                Learn More
+              </Link>
+            </span>
+            <ul>
+              {languages.map((e) => {
+                return (
+                  <li
+                    key={e.id}
+                    onClick={() => {
+                      setLangBtn((langBtn = e.id));
+                    }}
+                  >
+                    <div className="circle"></div>
+                    <span>{e.language}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+
+        {/* signin btn */}
+
+        <div
+          onMouseEnter={() => {
+            setSigninBtn(true);
+          }}
+          onMouseLeave={() => {
+            setSigninBtn(false);
+          }}
+          onClick={() => {
+            setSigninBtn(false);
           }}
           style={{ position: "relative" }}
         >
@@ -88,11 +161,15 @@ const NavBar = () => {
 
           <div
             className="SignInPopUp"
-            style={signinBtn ? { display: "flex" } : { display: "none" }}
+            style={
+              signinBtn
+                ? { transform: "translateX(-50%) scale(1)" }
+                : { transform: "scale(0)" }
+            }
           >
             <Link
               onClick={() => {
-                setSigninBtn(!signinBtn);
+                setSigninBtn(false);
               }}
               style={{ outline: "none" }}
               to="/signin"
@@ -103,7 +180,7 @@ const NavBar = () => {
               New customer?{" "}
               <Link
                 onClick={() => {
-                  setSigninBtn(!signinBtn);
+                  setSigninBtn(false);
                 }}
                 to="/account"
               >
@@ -120,7 +197,7 @@ const NavBar = () => {
                         <span key={id} style={{ margin: "2px 0" }}>
                           <Link
                             onClick={() => {
-                              setSigninBtn(!signinBtn);
+                              setSigninBtn(false);
                             }}
                             to="/signin"
                           >
@@ -135,6 +212,7 @@ const NavBar = () => {
             </div>
           </div>
         </div>
+
         <div className="returns">
           <span>
             Returns
@@ -169,6 +247,15 @@ const NavBar = () => {
         <li>Gift Cards</li>
         <li>Sell</li>
       </ul>
+
+      <div
+        className="dark_mask"
+        style={
+          signinBtn || langViewBtn
+            ? { transform: "scale(1)" }
+            : { transform: "scale(0)" }
+        }
+      ></div>
     </>
   );
 };

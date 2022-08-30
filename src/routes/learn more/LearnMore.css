@@ -1,0 +1,36 @@
+.learn_more {
+  width: 100%;
+  height: 100vh;
+  font-size: 16px;
+  background-color: #fff;
+  padding: 22px 35px;
+}
+
+.learn_more h1 {
+  font-weight: 500;
+}
+
+.learn_more > p {
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 17px;
+  letter-spacing: 0.2px;
+  margin-bottom: 15px;
+}
+
+.learn_more .wrap ol {
+  margin: 22px 0 22px 22px;
+}
+
+.learn_more .wrap p {
+  padding-bottom: 10px;
+}
+
+.learn_more .wrap a {
+  color: var(--main-link-color);
+}
+
+.learn_more .wrap a:hover {
+  color: var(--main-link-color-hover);
+  text-decoration: underline;
+}

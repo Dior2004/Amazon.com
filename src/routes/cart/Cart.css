@@ -1,15 +1,31 @@
 .cart-page {
   width: 100%;
   display: flex;
+  align-items: flex-start;
   padding: 15px;
 }
 
+.cart-page a {
+  color: var(--main-link-color);
+}
+
+.cart-page a:hover {
+  text-decoration: underline;
+  color: var(--main-link-color-hover);
+}
+
+.cart-page .cart_wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .no_purchase_banner {
-  width: 78.5%;
+  width: 100%;
   background-color: #fff;
   display: flex;
   padding: 52px 20px 20px 20px;
-  margin: 15px 0;
+  margin: 15px 0 22px 0;
 }
 
 .no_purchase_banner img {
@@ -28,12 +44,6 @@
 
 .signin_to_ur_account a {
   font-size: 15px;
-  color: var(--main-link-color);
-}
-
-.signin_to_ur_account a:hover {
-  text-decoration: underline;
-  color: var(--main-link-color-hover);
 }
 
 .signin_to_ur_account .btns {
@@ -59,9 +69,81 @@
   border-color: #f2ca00;
 }
 
-.signin_to_ur_account .signing_in_btn:hover {
+.signin_to_ur_account .signing_in_btn:hover,
+.currently_viewed_items .info button:hover {
   background-color: #f9c800;
 }
-.signin_to_ur_account .signing_up_btn:hover {
+.signin_to_ur_account .signing_up_btn:hover,
+.currently_viewed_items .info .other-options:hover {
   background-color: #00000008;
+}
+
+.cart-page .chosen_items {
+  width: 100%;
+  min-height: 72px;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-page .cart_wrapper > span {
+  font-size: 13px;
+}
+
+.cart-page .currently_viewed_items {
+  width: 300px;
+  background-color: #fff;
+  margin-left: 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 15px;
+}
+
+.currently_viewed_items li {
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  margin: 10px 0;
+}
+
+.currently_viewed_items img {
+  width: 112px;
+  margin: auto 0;
+}
+
+.currently_viewed_items .info {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.currently_viewed_items .info p,
+.currently_viewed_items .info span {
+  font-size: 13px;
+}
+
+.currently_viewed_items .info .price {
+  font-size: 16px;
+  color: #bc2904;
+}
+
+.currently_viewed_items .info button {
+  padding: 1px 5px 2px 5px;
+  font-size: 12px;
+  margin: 5px 0 0 0;
+  border-radius: 5px;
+  background-color: #ffd814;
+  border: 1px solid #f2ca00;
+  box-shadow: 0 5px 10px 2px #00000008;
+  cursor: pointer;
+}
+
+.currently_viewed_items .info .other-options {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.currently_viewed_items button a,
+.currently_viewed_items button a:hover {
+  color: #000;
+  text-decoration: none;
 }

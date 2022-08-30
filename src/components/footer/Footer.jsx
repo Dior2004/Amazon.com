@@ -14,7 +14,8 @@ const Footer = () => {
   const location = useLocation();
   return location.pathname === "/login" ||
     location.pathname === "/signin" ||
-    location.pathname === "/account" ? (
+    location.pathname === "/account" ||
+    location.pathname === "/learnmore" ? (
     <></>
   ) : (
     <div className="footer_wrap">
@@ -30,7 +31,7 @@ const Footer = () => {
                   {e.children.map((i, id) => {
                     return (
                       <span key={id}>
-                        <Link to="/">{i}</Link>
+                        <Link to="/falselink">{i}</Link>
                       </span>
                     );
                   })}
@@ -41,11 +42,13 @@ const Footer = () => {
 
           <div className="button_sect">
             <div className="wrap">
-              <img
-                width="76px"
-                src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
-                alt="logo"
-              />
+              <Link to="/">
+                <img
+                  width="76px"
+                  src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
+                  alt="logo"
+                />
+              </Link>
               <div className="btns">
                 <div className="btn one">
                   <i className="globe">
@@ -61,18 +64,23 @@ const Footer = () => {
                   <div className="loader"></div>
                 </div> */}
 
-                <div className="btn two">
-                  <h6>$</h6>
-                  <span>USD - U.S. Dollar</span>
-                </div>
-                <div className="btn three">
-                  <img
-                    style={{ width: 20, height: 13 }}
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRlIRDluemA2h0BXML3uCo1147SsKFZvXu-zVQMrZM_A&s"
-                    alt=""
-                  />
-                  <span>United States</span>
-                </div>
+                <Link to="/falselink">
+                  <div className="btn two">
+                    <h6>$</h6>
+                    <span>USD - U.S. Dollar</span>
+                  </div>
+                </Link>
+
+                <Link to="/falselink">
+                  <div className="btn three">
+                    <img
+                      style={{ width: 20, height: 13 }}
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRlIRDluemA2h0BXML3uCo1147SsKFZvXu-zVQMrZM_A&s"
+                      alt=""
+                    />
+                    <span>United States</span>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -83,7 +91,7 @@ const Footer = () => {
       <ul className="copyright">
         {footerCopyrights.links.map((links, id) => {
           return (
-            <Link key={id} to="/">
+            <Link key={id} to="/falselink">
               {links.title}
             </Link>
           );
