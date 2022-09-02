@@ -32,7 +32,7 @@ const Products = () => {
           <div key={index}>
             <div className="product_card">
               <h2>{i.title}</h2>
-              <Link to={i.linkRoute}>
+              <Link style={{ flex: 1 }} to={i.linkRoute}>
                 <div className="image_wrap">
                   <img src={i.imageURL} alt="" />
                 </div>
