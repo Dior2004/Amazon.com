@@ -18,14 +18,19 @@ const NavBar = () => {
   const [langViewBtn, setLangViewBtn] = useState(false);
   const [inputCondition, setInputCondition] = useState(false);
   let [langFlagBtn, setLangFlagBtn] = useState(0);
+  const [defaultLang, setDefaultLang] = useState(true);
 
-  return location.pathname === "/login" ||
-    location.pathname === "/signin" ||
-    location.pathname === "/account" ||
-    location.pathname === "/learnmore" ? (
-    <></>
-  ) : (
-    <>
+  return (
+    <div
+      style={
+        location.pathname === "/login" ||
+        location.pathname === "/signin" ||
+        location.pathname === "/account" ||
+        location.pathname === "/learnmore"
+          ? { display: "none" }
+          : { width: "100%" }
+      }
+    >
       <nav>
         <div className="image">
           <Link to="/">
@@ -81,7 +86,12 @@ const NavBar = () => {
           }}
           style={{ position: "relative" }}
         >
-          <Link to="/falselink">
+          <Link
+            onClick={() => {
+              setLangViewBtn(false);
+            }}
+            to="/falselink"
+          >
             <div className="language">
               <img
                 style={{ width: 25, height: 17, marginBottom: 2 }}
@@ -115,18 +125,44 @@ const NavBar = () => {
               </Link>
             </span>
             <ul>
-              {languages.map((e) => {
+              {/* default language */}
+
+              <label
+                onClick={() => {
+                  setLangFlagBtn((langFlagBtn = languages[0].id));
+                  setLangViewBtn(false);
+                }}
+                htmlFor={languages[0].language}
+              >
+                <input
+                  type="radio"
+                  name="current_lang"
+                  id={languages[0].language}
+                  defaultChecked={defaultLang}
+                />
+                <div className="circle"></div>
+                <span>
+                  {languages[0].language} - {languages[0].abbr.toUpperCase()}
+                </span>
+              </label>
+
+              {languages.slice(1).map((e) => {
                 return (
-                  <li
+                  <label
                     key={e.id}
                     onClick={() => {
                       setLangFlagBtn((langFlagBtn = e.id));
                       setLangViewBtn(false);
+                      setDefaultLang(false);
                     }}
+                    htmlFor={e.language}
                   >
+                    <input type="radio" name="current_lang" id={e.language} />
                     <div className="circle"></div>
-                    <span>{e.language}</span>
-                  </li>
+                    <span>
+                      {e.language} - {e.abbr.toUpperCase()}
+                    </span>
+                  </label>
                 );
               })}
             </ul>
@@ -258,7 +294,7 @@ const NavBar = () => {
             : { transform: "scale(0)" }
         }
       ></div>
-    </>
+    </div>
   );
 };
 

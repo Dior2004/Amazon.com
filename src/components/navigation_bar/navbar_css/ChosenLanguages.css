@@ -42,11 +42,16 @@
   margin-top: 8px;
 }
 
-.list-of-langs ul li {
+.list-of-langs ul label {
   padding: 10px 0;
   display: flex;
   align-items: center;
   cursor: pointer;
+  position: relative;
+}
+
+.list-of-langs label input {
+  width: 0;
 }
 
 .list-of-langs .circle {
@@ -61,16 +66,24 @@
   transition: 0.3s;
 }
 
-.list-of-langs ul li:hover .circle::before {
+.list-of-langs .circle::before {
   content: "";
   position: absolute;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background-color: var(--main-link-color-hover);
+  transform: scale(0);
+  transition: 0.1s;
 }
 
-.list-of-langs ul li:hover span {
+.list-of-langs ul label:hover .circle::before,
+.list-of-langs ul label input:checked + .circle::before,
+.list-of-langs ul label:first-child .default::before {
+  transform: scale(1);
+}
+
+.list-of-langs ul label:hover span {
   color: var(--main-link-color-hover);
   text-decoration: underline;
 }
