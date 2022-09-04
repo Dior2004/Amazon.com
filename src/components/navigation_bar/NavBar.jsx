@@ -1,10 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "./navbar_css/NavBar.css";
 import "./navbar_css/SignInPopUp.css";
 import "./navbar_css/ChosenLanguages.css";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { GoSearch } from "react-icons/go";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -12,6 +11,7 @@ import {
   languages,
 } from "./YourListsAndYourAccountsPlusLanguages";
 import LanguageList from "./LanguageList";
+import Search from "./Search";
 
 const NavBar = () => {
   const location = useLocation();
@@ -39,6 +39,25 @@ const NavBar = () => {
     localStorage.setItem("currentLang", JSON.stringify(langList));
     localStorage.setItem("flag", JSON.stringify(langFlagBtn));
   }, [langList, langFlagBtn]);
+
+  let searchAreaRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!searchAreaRef.current.contains(e.target)) setInputCondition(false);
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+
+    // this olso works
+
+    /* document.addEventListener("mousedown", (e) => {
+      if (!searchAreaRef.current.contains(e.target)) setInputCondition(false);
+    }); */
+  });
 
   return (
     <div
@@ -70,29 +89,14 @@ const NavBar = () => {
             <h2> Uzbekistan</h2>
           </span>
         </div>
-        <form
-          className="serach_area"
-          style={inputCondition ? { boxShadow: "0px 0px 2px 3px #ff9900" } : {}}
-        >
-          <div className="select">
-            <span>All</span>
-            <i style={{ transform: "translateY(3px)" }}>
-              <IoMdArrowDropdown />
-            </i>
-          </div>
-          <input
-            onFocus={() => {
-              setInputCondition(true);
-            }}
-            type="text"
-            required
-          />
-          <button>
-            <i>
-              <GoSearch />
-            </i>
-          </button>
-        </form>
+
+        {/* search */}
+
+        <Search
+          searchAreaRef={searchAreaRef}
+          inputCondition={inputCondition}
+          setInputCondition={setInputCondition}
+        />
 
         {/* lang btn */}
 
