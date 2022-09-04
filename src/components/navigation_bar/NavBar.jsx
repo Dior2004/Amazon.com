@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "./navbar_css/NavBar.css";
 import "./navbar_css/SignInPopUp.css";
 import "./navbar_css/ChosenLanguages.css";
@@ -11,14 +11,34 @@ import {
   yourListsYourAccounts,
   languages,
 } from "./YourListsAndYourAccountsPlusLanguages";
+import LanguageList from "./LanguageList";
 
 const NavBar = () => {
   const location = useLocation();
   const [signinBtn, setSigninBtn] = useState(false);
   const [langViewBtn, setLangViewBtn] = useState(false);
   const [inputCondition, setInputCondition] = useState(false);
-  let [langFlagBtn, setLangFlagBtn] = useState(0);
-  const [defaultLang, setDefaultLang] = useState(true);
+  let [langFlagBtn, setLangFlagBtn] = useState(
+    JSON.parse(localStorage.getItem("flag")) || 0
+  );
+
+  const [langList, setLangList] = useState(
+    JSON.parse(localStorage.getItem("currentLang")) || languages
+  );
+
+  const handleChecked = (index) => {
+    const newLangArray = langList.map((element) =>
+      element.id === index
+        ? { ...element, checked: true }
+        : { ...element, checked: false }
+    );
+    setLangList(newLangArray);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("currentLang", JSON.stringify(langList));
+    localStorage.setItem("flag", JSON.stringify(langFlagBtn));
+  }, [langList, langFlagBtn]);
 
   return (
     <div
@@ -95,7 +115,7 @@ const NavBar = () => {
             <div className="language">
               <img
                 style={{ width: 25, height: 17, marginBottom: 2 }}
-                src={languages[langFlagBtn].flagUrl}
+                src={langList[langFlagBtn].flagUrl}
                 alt="flag"
               />
               <i style={{ transform: "translateY(4px)" }}>
@@ -124,48 +144,13 @@ const NavBar = () => {
                 Learn More
               </Link>
             </span>
-            <ul>
-              {/* default language */}
-
-              <label
-                onClick={() => {
-                  setLangFlagBtn((langFlagBtn = languages[0].id));
-                  setLangViewBtn(false);
-                }}
-                htmlFor={languages[0].language}
-              >
-                <input
-                  type="radio"
-                  name="current_lang"
-                  id={languages[0].language}
-                  defaultChecked={defaultLang}
-                />
-                <div className="circle"></div>
-                <span>
-                  {languages[0].language} - {languages[0].abbr.toUpperCase()}
-                </span>
-              </label>
-
-              {languages.slice(1).map((e) => {
-                return (
-                  <label
-                    key={e.id}
-                    onClick={() => {
-                      setLangFlagBtn((langFlagBtn = e.id));
-                      setLangViewBtn(false);
-                      setDefaultLang(false);
-                    }}
-                    htmlFor={e.language}
-                  >
-                    <input type="radio" name="current_lang" id={e.language} />
-                    <div className="circle"></div>
-                    <span>
-                      {e.language} - {e.abbr.toUpperCase()}
-                    </span>
-                  </label>
-                );
-              })}
-            </ul>
+            <LanguageList
+              langFlagBtn={langFlagBtn}
+              setLangFlagBtn={setLangFlagBtn}
+              setLangViewBtn={setLangViewBtn}
+              langList={langList}
+              handleChecked={handleChecked}
+            />
           </div>
         </div>
 
