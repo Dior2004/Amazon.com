@@ -13,7 +13,7 @@ import {
 import LanguageList from "./LanguageList";
 import Search from "./Search";
 
-const NavBar = () => {
+const NavBar = ({ searchInput, setSearchInput }) => {
   const location = useLocation();
   const [signinBtn, setSigninBtn] = useState(false);
   const [langViewBtn, setLangViewBtn] = useState(false);
@@ -96,6 +96,8 @@ const NavBar = () => {
           searchAreaRef={searchAreaRef}
           inputCondition={inputCondition}
           setInputCondition={setInputCondition}
+          setSearchInput={setSearchInput}
+          searchInput={searchInput}
         />
 
         {/* lang btn */}

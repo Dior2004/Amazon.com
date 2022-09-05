@@ -1,4 +1,5 @@
 import "./css/App.css";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/home/Home";
 import NavBar from "./components/navigation_bar/NavBar";
@@ -15,10 +16,12 @@ import LearnMore from "./routes/learn more/LearnMore";
 import FalseLink from "./routes/false-link/FalseLink";
 
 function App() {
+  const [searchInput, setSearchInput] = useState("");
+
   return (
     <BrowserRouter>
       <div className="app">
-        <NavBar />
+        <NavBar searchInput={searchInput} setSearchInput={setSearchInput} />
 
         <Routes>
           <Route exact path="/" element={<Home />} />

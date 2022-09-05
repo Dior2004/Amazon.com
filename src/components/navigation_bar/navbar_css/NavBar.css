@@ -103,9 +103,14 @@ nav a {
   margin-left: 5px;
 }
 
-.serach_area input {
-  height: 100%;
+.inp_search_wrap {
   flex: 1;
+  position: relative;
+}
+
+.serach_area input {
+  width: 100%;
+  height: 100%;
   border: none;
   outline: none;
   padding: 0 10px;
