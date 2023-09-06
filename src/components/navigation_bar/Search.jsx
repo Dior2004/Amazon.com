@@ -8,16 +8,24 @@ const Search = ({
   setInputCondition,
   searchAreaRef,
   setSearchInput,
-  SearchInput,
+  searchInput,
+  productsData,
+  setRelatedProducts,
 }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchInput(productsData.length ? productsData[0].title : "");
+    setRelatedProducts(
+      productsData.length ? productsData[0].title : "Nothing found"
+    );
+    setInputCondition(false);
+  };
+
   return (
     <form
       ref={searchAreaRef}
       className="serach_area"
-      onSubmit={(e) => {
-        e.preventDefault();
-        // setInputCondition(false);
-      }}
+      onSubmit={(e) => handleSubmit(e)}
       style={inputCondition ? { boxShadow: "0px 0px 2px 3px #ff9900" } : {}}
     >
       <div className="select">
@@ -32,15 +40,20 @@ const Search = ({
             setInputCondition(true);
           }}
           type="text"
-          value={SearchInput}
+          value={searchInput}
           onChange={(e) => {
             setSearchInput(e.target.value);
+            setInputCondition(true);
           }}
           required
         />
         <SearchResults
           inputCondition={inputCondition}
           setInputCondition={setInputCondition}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          productsData={productsData}
+          setRelatedProducts={setRelatedProducts}
         />
       </div>
 

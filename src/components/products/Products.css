@@ -1,12 +1,10 @@
 .products_wrap {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 0 20px 20px 20px;
+  padding: 20px;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  z-index: 5;
-  margin-top: -360px;
 }
 
 .product_card {
@@ -16,7 +14,7 @@
   display: flex;
   flex-direction: column;
   padding: 15px;
-  margin: 10px 0;
+  margin: 10px;
   transition: 0.2s;
 }
 

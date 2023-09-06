@@ -1,5 +1,5 @@
 import "./css/App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/home/Home";
 import NavBar from "./components/navigation_bar/NavBar";
@@ -14,18 +14,54 @@ import Cart from "./routes/cart/Cart";
 import Backtotop from "./components/backtotop/Backtotop";
 import LearnMore from "./routes/learn more/LearnMore";
 import FalseLink from "./routes/false-link/FalseLink";
+import { productsData } from "./static/products_data";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
 
+  const [relatedProducts, setRelatedProducts] = useState(
+    localStorage.getItem("relatedItems") || ""
+  );
+
+  useEffect(() => {
+    localStorage.setItem("relatedItems", relatedProducts);
+  }, [relatedProducts]);
+
+  // console.log(relatedProducts);
+
   return (
     <BrowserRouter>
       <div className="app">
-        <NavBar searchInput={searchInput} setSearchInput={setSearchInput} />
+        <NavBar
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          productsData={productsData.filter((e) =>
+            e.title.toLowerCase().includes(searchInput.toLowerCase())
+          )}
+          setRelatedProducts={setRelatedProducts}
+        />
 
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/seemore" element={<SeeMore />} />
+          <Route
+            exact
+            path="/"
+            element={
+              <Home
+                productsData={productsData}
+                setRelatedProducts={setRelatedProducts}
+              />
+            }
+          />
+          <Route
+            path="/seemore"
+            element={
+              <SeeMore
+                productsData={productsData.filter((e) =>
+                  e.title.toLowerCase().includes(relatedProducts.toLowerCase())
+                )}
+              />
+            }
+          />
           <Route path="/shopnow" element={<ShopNow />} />
           <Route path="/account" element={<Account />} />
           <Route path="/login" element={<Login />} />

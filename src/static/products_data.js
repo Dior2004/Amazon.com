@@ -78,6 +78,17 @@ export const productsData = [
       "https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Dashboard/Fuji_Dash_Electronics_1x._SY304_CB432774322_.jpg",
     linkName: "See more",
     linkRoute: "/seemore",
+    related: {
+      departmentInfo: {
+        department: [
+          { title: "Accessories & Supplies" },
+          { title: "Camera & Photo" },
+          { title: "Car & Vehicle Electronics" },
+          { title: "Home Audio" },
+        ],
+        brands: "Some Options",
+      },
+    },
   },
   {
     id: 4,
